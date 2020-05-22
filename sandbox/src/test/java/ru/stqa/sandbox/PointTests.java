@@ -7,7 +7,8 @@ import ru.stqa.pft.sandbox.Point;
 @Test
 public class PointTests {
     public void TestDistance() {
-        Point p = new Point(9,8);
-        Assert.assertEquals(p.distance(), 4.123105625617661);
+        Point p1 = new Point(10,8);
+        Point p2 = new Point(19, 8);
+        Assert.assertEquals(p1.distance(p2), 9);
     }
 }
