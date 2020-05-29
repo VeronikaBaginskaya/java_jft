@@ -10,13 +10,13 @@ public class ContactDeletionTest extends TestBase {
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().submitContactDeletion();
-//    app.getNavigationHelper().returnToHomePage();
+    app.getNavigationHelper().returnToHomePage();
 
-    try {
-      sleep(5000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+//    try {
+//      sleep(5000);
+//    } catch (InterruptedException e) {
+//      e.printStackTrace();
+//    }
 
   }
 
