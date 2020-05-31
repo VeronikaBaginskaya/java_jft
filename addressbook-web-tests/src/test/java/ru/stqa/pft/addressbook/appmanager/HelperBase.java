@@ -8,9 +8,8 @@ public class HelperBase {
   protected WebDriver wd;
 
   public HelperBase(WebDriver wd) {
-    this.wd=wd;
+    this.wd = wd;
   }
-
 
 
   public void click(By locator) {
@@ -19,19 +18,22 @@ public class HelperBase {
 
 
   protected void type(By locator, String text) {
+    click(locator);
     if (text != null) {
-      click(locator);
-      wd.findElement(locator).clear();
-      wd.findElement(locator).sendKeys(text);
+      String existingText = wd.findElement(locator).getAttribute("value");
+      if (!text.equals(existingText)) {
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
+      }
     }
   }
-  public boolean isAlertPresent() {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
+    public boolean isAlertPresent () {
+      try {
+        wd.switchTo().alert();
+        return true;
+      } catch (NoAlertPresentException e) {
+        return false;
+      }
     }
-  }
 
-}
+  }
