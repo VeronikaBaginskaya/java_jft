@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -13,9 +12,11 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-  public void showContactDetails() {
-    click(By.xpath("(//img[@alt='Details'])[2]"));
-  }
+//  public void showContactDetails() {
+//    click(By.xpath("(//img[@alt='Details'])[2]"));
+//  }
+//(падает тест по созданию контакта из-за тайм аута wd.manage().timeouts().implicitlyWait =0 - не успевает подгрузиться элемент,
+// а если поставить тайм аут побольше то тесты выполняются дольше соотвестено, пока решила обойтись без этого метода)
 
   public void submitContactCreation() {
     click(By.xpath("(//input[@name='submit'])[2]"));
@@ -60,5 +61,20 @@ public class ContactHelper extends HelperBase {
   public void initContactModification() {
     click(By.xpath("//img[@alt='Edit']"));
 
+  }
+
+  public void contactCreate(ContactData contact, boolean b) {
+    goToAddNewContactForm();
+    fillContactForm(contact, b);
+    submitContactCreation();
+
+  }
+
+  public void goToAddNewContactForm() {
+    click(By.linkText("add new"));
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
