@@ -16,7 +16,4 @@ public class SessionHelper extends HelperBase {
     click(By.xpath("//input[@value='Login']"));
   }
 
-  public void goToAddNewContactForm() {
-    click(By.linkText("add new"));
-  }
 }
