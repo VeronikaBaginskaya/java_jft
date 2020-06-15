@@ -14,14 +14,14 @@ public class ContactModificationTest extends TestBase {
   public void testContactModification() {
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().contactCreate(new ContactData("test", "test1", "test2", "test3", "test4", "test5", "test6", "12345", "123456", "1234567", "12345678", "test7", "test1"), true);
-      app.getNavigationHelper().returnToHomePage();
+      app.goTo().returnToHomePage();
     }
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().initContactModification(before.size() - 1);
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "test9", "test", "test9", "test3", "test4", "test5", "test6", "12345", "123456", "1234567", "12345678", "test7", "test1");
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().submitContactUpdate();
-    app.getNavigationHelper().returnToHomePage();
+    app.goTo().returnToHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
 
