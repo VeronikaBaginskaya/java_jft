@@ -11,8 +11,8 @@ public class ContactData {
     private  String title;
     private  String company;
     private  String address;
-    private  String home;
-    private  String mobile;
+    private  String homePhone;
+    private  String mobilePhone;
     private  String workPhone;
     private  String fax;
     private  String email;
@@ -47,12 +47,12 @@ public class ContactData {
         return address;
     }
 
-    public String getHome() {
-        return home;
+    public String getHomePhone() {
+        return homePhone;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
     public String getWorkPhone() {
@@ -115,13 +115,13 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withHome(String home) {
-        this.home = home;
+    public ContactData withHomePhone(String home) {
+        this.homePhone = homePhone;
         return this;
     }
 
-    public ContactData withMobile(String mobile) {
-        this.mobile = mobile;
+    public ContactData withMobilePhone(String mobile) {
+        this.mobilePhone = mobilePhone;
         return this;
     }
 
@@ -152,12 +152,15 @@ public class ContactData {
         ContactData that = (ContactData) o;
         return id == that.id &&
             Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName);
+            Objects.equals(lastName, that.lastName) &&
+            Objects.equals(homePhone, that.homePhone) &&
+            Objects.equals(mobilePhone, that.mobilePhone) &&
+            Objects.equals(workPhone, that.workPhone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(id, firstName, lastName, homePhone, mobilePhone, workPhone);
     }
 
     @Override
@@ -165,6 +168,9 @@ public class ContactData {
         return "ContactData{" +
             "firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", homePhone='" + homePhone + '\'' +
+            ", mobilePhone='" + mobilePhone + '\'' +
+            ", workPhone='" + workPhone + '\'' +
             '}';
     }
 
