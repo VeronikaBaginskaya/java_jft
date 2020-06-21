@@ -115,12 +115,12 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withHomePhone(String home) {
+    public ContactData withHomePhone(String homePhone) {
         this.homePhone = homePhone;
         return this;
     }
 
-    public ContactData withMobilePhone(String mobile) {
+    public ContactData withMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
         return this;
     }
